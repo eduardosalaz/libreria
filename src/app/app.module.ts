@@ -9,6 +9,19 @@ import { LoginComponent } from './components/login/login.component';
 import { ModificarLibrosComponent } from './components/modificar-libros/modificar-libros.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import {RouterModule, Routes} from '@angular/router';
+import { MenuComponent } from './components/menu/menu.component';
+
+const appRoutes: Routes = [
+  {path: '', redirectTo: 'lista', pathMatch: 'full'},
+  {path: 'listar', component: ListarLibrosComponent},
+  {path: 'crear', component: CrearLibrosComponent},
+  {path: 'modificar', component: ModificarLibrosComponent},
+  {path: 'login', component: LoginComponent},
+  {path: '**', redirectTo: 'lista', pathMatch: 'full'}
+];
+
+
 
 @NgModule({
   declarations: [
@@ -18,11 +31,13 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     LoginComponent,
     ModificarLibrosComponent,
     RegistroComponent,
-    NavbarComponent
+    NavbarComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
