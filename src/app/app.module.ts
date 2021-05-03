@@ -13,11 +13,12 @@ import {RouterModule, Routes} from '@angular/router';
 import { MenuComponent } from './components/menu/menu.component';
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: 'lista', pathMatch: 'full'},
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: 'login', component: LoginComponent},
   {path: 'listar', component: ListarLibrosComponent},
   {path: 'crear', component: CrearLibrosComponent},
   {path: 'modificar', component: ModificarLibrosComponent},
-  {path: 'login', component: LoginComponent},
+  {path: 'registro', component: RegistroComponent},
   {path: '**', redirectTo: 'lista', pathMatch: 'full'}
 ];
 

@@ -1,6 +1,20 @@
-<a routerLink="/listar">Listar </a>
-<br>
-<a routerLink="/crear">Crear </a>
-<br>
-<a routerLink="/modificar">Modificar </a>
-<br>
+<nav class="navbar navbar-expand-lg navbar-light" style = "background-color: #FFD78A">
+  <a class="navbar-brand" href="#">
+    <img src="assets/press.png" width="50" height="50" alt="Press Icon">
+    <strong> Librería Gutenberg </strong>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/listar">Listar </a>
+      </li><li class="nav-item">
+        <a class="nav-link" routerLink="/crear">Crear </a>
+      </li><li class="nav-item">
+        <a class="nav-link" routerLink="/modificar">Modificar </a>
+      </li>
+    </ul>
+  </div>
+</nav>
