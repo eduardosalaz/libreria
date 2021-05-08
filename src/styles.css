@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+  background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.1)), url("assets/libraryBackground.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
