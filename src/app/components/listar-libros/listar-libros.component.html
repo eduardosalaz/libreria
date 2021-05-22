@@ -16,14 +16,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td scope="row">1</td>
-          <td scope="row">123-4567</td>
-          <td scope="row">Ciencia Ficción</td>
-          <td scope="row">Dune</td>
-          <td scope="row">Frank Herbert</td>
-          <td scope="row">$450</td>
-          <td scope="row">Nova</td>
+        <tr *ngFor="let item of items | async; let i = index">
+          <td scope="row">{{i+1}}</td>
+          <td scope="row">{{item.ISBN}}</td>
+          <td scope="row">{{item.Genero}}</td>
+          <td scope="row">{{item.Titulo}}</td>
+          <td scope="row">{{item.Autor}}</td>
+          <td scope="row">{{item.Precio}}</td>
+          <td scope="row">{{item.Editorial}}</td>
           <td>
             <i class="far fa-edit fa-lg text-info fa-2x" style="margin-right: 20px"></i>
             <i class="far fa-trash-alt fa-lg text-danger fa-2x"></i>

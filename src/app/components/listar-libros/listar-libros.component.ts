@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-listar-libros',
@@ -6,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listar-libros.component.css']
 })
 export class ListarLibrosComponent implements OnInit {
-
-  constructor() { }
+  items: Observable<any[]>;
+  constructor(firestore: AngularFirestore) {
+    this.items = firestore.collection('libros').valueChanges();
+  }
 
   ngOnInit(): void {
   }

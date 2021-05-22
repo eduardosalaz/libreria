@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "libreria-deac8": {
+      "hosting": {
+        "libreria": [
+          "libreria-deac8"
+        ]
+      }
+    }
+  }
+}

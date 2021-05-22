@@ -1,7 +1,11 @@
+// Modulos
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
+import { AngularFireModule } from '@angular/fire';
+import { RouterModule, Routes } from '@angular/router';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+// Componentes
 import { AppComponent } from './app.component';
 import { CrearLibrosComponent } from './components/crear-libros/crear-libros.component';
 import { ListarLibrosComponent } from './components/listar-libros/listar-libros.component';
@@ -9,8 +13,10 @@ import { LoginComponent } from './components/login/login.component';
 import { ModificarLibrosComponent } from './components/modificar-libros/modificar-libros.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import {RouterModule, Routes} from '@angular/router';
 import { MenuComponent } from './components/menu/menu.component';
+// Environment
+import { environment } from '../environments/environment';
+
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -21,8 +27,6 @@ const appRoutes: Routes = [
   {path: 'registro', component: RegistroComponent},
   {path: '**', redirectTo: 'lista', pathMatch: 'full'}
 ];
-
-
 
 @NgModule({
   declarations: [
@@ -38,7 +42,9 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
