@@ -6,6 +6,9 @@ import { AngularFireModule } from '@angular/fire';
 import { RouterModule, Routes } from '@angular/router';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import {ReactiveFormsModule} from '@angular/forms';
+import {CommonModule} from '@angular/common';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastrModule} from 'ngx-toastr';
 // Componentes
 import { AppComponent } from './app.component';
 import { CrearLibrosComponent } from './components/crear-libros/crear-libros.component';
@@ -17,6 +20,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MenuComponent } from './components/menu/menu.component';
 // Environment
 import { environment } from '../environments/environment';
+
 
 
 
@@ -47,7 +51,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

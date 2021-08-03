@@ -2,10 +2,16 @@
   <div class="row">
     <div class="card text-center">
       <div class ="card-body">
-        <h3>Crear nuevo registro</h3>
+        <h3>Crear nuevo registro
+          <div *ngIf="loading" class="spinner-border float-end" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </h3>
+        <span *ngIf="submitted && createLibro.invalid" class="badge bg-danger">Todos los campos son requeridos. </span>
         <form class="mt-4" [formGroup]="createLibro" (ngSubmit)="crear()">
         <div class="row">
           <div class="col">
+            <span *ngIf="submitted && createLibro.controls.ISBN.invalid" class="badge bg-danger">Solo se admiten números y guiones intermedios.</span>
             <input type="text" formControlName="ISBN" class="form-control form-control-lg" placeholder="ISBN">
           </div>
           <div class="col">
@@ -22,6 +28,7 @@
         </div>
         <div class="row">
           <div class="col">
+            <span *ngIf="submitted && createLibro.controls.Precio.invalid" class="badge bg-danger">Solo se admiten números.</span>
             <input type="text" formControlName="Precio" class="form-control form-control-lg mt-2" placeholder="Precio">
           </div>
           <div class="col">

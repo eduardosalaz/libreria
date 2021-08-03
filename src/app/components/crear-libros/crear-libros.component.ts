@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {LibroService} from '../../services/libro.service';
 import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 
 @Component({
@@ -12,9 +13,10 @@ import {Router} from '@angular/router';
 export class CrearLibrosComponent implements OnInit {
   createLibro: FormGroup;
   submitted = false;
+  loading = false;
 
 
-  constructor(private formBuilder: FormBuilder, private libroService: LibroService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private libroService: LibroService, private router: Router, private toastr: ToastrService) {
     this.createLibro = this.formBuilder.group({
       ISBN: ['', [Validators.required, Validators.pattern('^[0-9-]*$')]],
       Genero: ['', Validators.required],
@@ -30,7 +32,9 @@ export class CrearLibrosComponent implements OnInit {
 
   crear(): void {
     this.submitted = true;
+    this.loading = true;
     if (this.createLibro.invalid){
+      console.log('pichla ');
       return;
     }else {
       const Libro: any = {
@@ -44,9 +48,13 @@ export class CrearLibrosComponent implements OnInit {
         fechaActualizacion: new Date(),
       };
       this.libroService.agregarLibro(Libro).then(() => {
-        console.log('Libro registrado con exito');
+        this.toastr.success('Libro creado', 'Éxito', {
+          positionClass: 'toast-bottom-center'
+        });
+        this.loading = false;
         this.router.navigate(['/listar']);
       }).catch(error => {
+        this.loading = false;
         console.log(error);
       });
       console.log(Libro.isbn);
